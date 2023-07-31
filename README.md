@@ -42,7 +42,7 @@ See **[the full documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)** 
 
 This package only has one method currently.
 
-```
+```python
    Y = sgtsnepi(A)
 ```
 
@@ -187,7 +187,7 @@ Here is an example to use function sgtsnepipy to generate a 2D embedding of an E
 You have to use import networkx to generate a ER graph and matplotlib to visualize the embedding
 
 
-```
+```python
     from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
     import networkx as nx
     import matplotlib.pyplot as plt
