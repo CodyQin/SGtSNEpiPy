@@ -6,7 +6,7 @@ SGtSNEpiPy is a Python interface, i.e., a wrapper to **['SG-t-SNE-П'](https://g
 
 ### Introduction
 
-The algorithm SG-t-SNE and the software t-SNE-Π were first described in Reference **[(Nikos Pitsianis, Alexandros-Stavros Iliopoulos, Dimitris Floros, Xiaobai Sun (2019))](https://ieeexplore.ieee.org/document/8916505)** and released on **[GitHub](https://github.com/fcdimitr/sgtsnepi)** in June 2019 **[(Nikos Pitsianis, Dimitris Floros, Alexandros-Stavros Iliopoulos, Xiaobai Sun (2019))](https://joss.theoj.org/papers/10.21105/joss.01577)**. SG-t-SNE-П is a nonlinear method that directly embeds large, sparse, stochastic graphs into low-dimensional spaces without requiring vertex features to reside in or be transformed into a metric space. The approach is inspired by and builds upon the core principle of t-SNE for nonlinear dimensionality reduction and data visualization. Our implementation provides high-performance software for 1D, 2D, and 3D embedding of large sparse graphs on shared memory multicore computers.
+The algorithm SG-t-SNE and the software t-SNE-Π were first described in Reference **[(Nikos Pitsianis, Alexandros-Stavros Iliopoulos, Dimitris Floros, Xiaobai Sun (2019))](https://ieeexplore.ieee.org/document/8916505)** [[1]](#1) and released on **[GitHub](https://github.com/fcdimitr/sgtsnepi)** in June 2019 **[(Nikos Pitsianis, Dimitris Floros, Alexandros-Stavros Iliopoulos, Xiaobai Sun (2019))](https://joss.theoj.org/papers/10.21105/joss.01577)** [[2]](#2). SG-t-SNE-П is a nonlinear method that directly embeds large, sparse, stochastic graphs into low-dimensional spaces without requiring vertex features to reside in or be transformed into a metric space. The approach is inspired by and builds upon the core principle of t-SNE for nonlinear dimensionality reduction and data visualization. Our implementation provides high-performance software for 1D, 2D, and 3D embedding of large sparse graphs on shared memory multicore computers.
 
 
 SGtSNEpi, a Julia interface, i.e., a wrapper to SG-t-SNE-Π was released on **[GitHub](https://github.com/fcdimitr/SGtSNEpi.jl)** in 2019. SGtSNEpiPy uses **[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)** module to make this Julia interface SGtSNEpi readily deployable to the Python ecosystem.
@@ -228,11 +228,9 @@ Yihua(Aaron) Zhong: yihua.zhong@duke.edu
 
 ## Citation
 
-<a id="1">[1]</a >
-- Nikos Pitsianis, Alexandros-Stavros Iliopoulos, Dimitris Floros, Xiaobai Sun, **[Spaceland Embedding of Sparse Stochastic Graphs](https://doi.org/10.1109/HPEC.2019.8916505)**, In IEEE High Performance Extreme Computing Conference, 2019.
+<a id="1">[1]</a > Nikos Pitsianis, Alexandros-Stavros Iliopoulos, Dimitris Floros, Xiaobai Sun, **[Spaceland Embedding of Sparse Stochastic Graphs](https://doi.org/10.1109/HPEC.2019.8916505)**, In IEEE High Performance Extreme Computing Conference, 2019.
 
-<a id="2">[2]</a >
-- Nikos Pitsianis, Dimitris Floros, Alexandros-Stavros Iliopoulos, Xiaobai Sun, **[SG-t-SNE-Π: Swift Neighbor Embedding of Sparse Stochastic Graphs](https://doi.org/10.21105/joss.01577)**, Journal of Open Source Software, 4(39), 1577, 2019.
+<a id="2">[2]</a > Nikos Pitsianis, Dimitris Floros, Alexandros-Stavros Iliopoulos, Xiaobai Sun, **[SG-t-SNE-Π: Swift Neighbor Embedding of Sparse Stochastic Graphs](https://doi.org/10.21105/joss.01577)**, Journal of Open Source Software, 4(39), 1577, 2019.
 
 If you use this software, please cite the following paper.
 
