@@ -185,40 +185,44 @@ Because there is currently no replacement for Enum type in SGtSNEpy, we are miss
 </ul>
 
 ## Examples
-Here is an example to use function sgtsnepipy to generate a 2D embedding of an ER model.
-You have to use import networkx to generate a ER graph and matplotlib to visualize the embedding
+
+This example demonstrates the application of function `SGtSNEpiPy` using the **[SG-t-SNE-П](https://fcdimitr.github.io/SGtSNEpi.jl/stable/)** algorithm to visualize **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. The algorithm creates a low-dimensional embedding of the nodes while preserving their structural relationships. Nodes are colored based on their club membership ('Mr. Hi' or 'Officer'). The scatter plot helps understand the social network's structure and patterns based on club affiliations.
 
 
 ```python
-    from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
-    import networkx as nx
-    import matplotlib.pyplot as plt
-    import matplotlib.cm as cm
-    
-    # Generate ER Model graph
-    n = 1000  # Number of nodes
-    p = 0.2  # Probability of an edge between any two nodes
-    G = nx.erdos_renyi_graph(n=n, p=p, seed=170)
-
-    G_sparse_matrix = nx.to_scipy_sparse_matrix(G) 
-    y = sgtsnepipy(G_sparse_matrix)
-
-    # Now use the SGtSNEpi to show the visualization after embedding
-    # Get the degrees of the nodes in the graph
-    node_degrees = np.array([G.degree(node) for node in G.nodes])
-    # Normalize the degrees to the range [0, 1] for color mapping
-    node_degrees_normalized = node_degrees / np.max(node_degrees)
-    # Create a color map
-    color_map = cm.get_cmap('viridis')  # 'viridis' is just an example, you can use any color map you like
-    # Apply the color map to your normalized degrees
-    colors = color_map(node_degrees_normalized)
-
-    plt.scatter(y[:,0], y[:,1], c=colors)
-    plt.colorbar(label='Node degree')
-    plt.title("2D embedding of ER model (n = 1000, p = 0.2, seed = 170)")
-
-    plt.show()
+   from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
+   import networkx as nx
+   import numpy as np
+   import matplotlib.pyplot as plt
+   
+   G = nx.karate_club_graph()
+   G_sparse_matrix = nx.to_scipy_sparse_matrix(G) 
+   y = sgtsnepipy(G_sparse_matrix,d=2)
+   
+   
+   # 'G' is the Zachary's Karate Club graph with 'club' attribute for each node
+   
+   # Separate the X and Y coordinates from the embedding 'y'
+   X = y[:, 0]
+   Y = y[:, 1]
+   
+   # Get the color for each node based on the 'club' attribute
+   node_colors = ['red' if G.nodes[node]['club'] == 'Mr. Hi' else 'blue' for node in G.nodes]
+   
+   # Create a scatter plot to visualize the embedding and color the nodes
+   plt.scatter(X, Y, c=node_colors, alpha=0.7)
+   
+   # Label the nodes with their numbers (node names)
+   for node, (x, y) in enumerate(zip(X, Y)):
+       plt.text(x, y, str(node))
+   
+   plt.title("2D SG-t-SNE-П Embedding of Zachary's Karate Club")
+   plt.xlabel("Dimension 1")
+   plt.ylabel("Dimension 2")
+   plt.show()
 ```
+
+<img width="588" alt="2D SG-t-SNE-Π embedding of Zachary’s Karate CLub" src="https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/07d337ca-2eae-4a61-9ac1-105a0aa89264">
 
 
 ## Contact
