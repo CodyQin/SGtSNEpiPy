@@ -221,7 +221,7 @@ This example demonstrates the application of function `SGtSNEpiPy` using the **[
    plt.show()
 ```
 
-<img width="588" alt="2D SG-t-SNE-Π embedding of Zachary’s Karate CLub" src="https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/07d337ca-2eae-4a61-9ac1-105a0aa89264">
+<img width="599" alt="2D SG-t-SNE-Π Embedding of Zachary’s Karate CLub" src="https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/7e299fc0-4162-4f0f-b39e-dfba6c6f59cc">
 
 
 ## Contact
