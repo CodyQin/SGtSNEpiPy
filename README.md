@@ -53,7 +53,9 @@ This package only has one method currently.
 
 ### Returns Y: array with the coordinates of the embedding of the graph nodes
 
-- Data Type: `numpy.ndarray` with three arrays: `numpy.int32`, `numpy.int32`, `numpy.float4` ** **THIS CANNOT BE CORRECT!!!** **
+- Data Type: `numpy.ndarray`, a 2-dimensional array of `numpy.float64` in `Python`.
+   - Number of rows: the number of rows or columns in your input CSR matrix.
+   - Number of columns: the number of dimensions of the embedding space.
 
 
 ## Optional input parameters
