@@ -186,7 +186,7 @@ Because there is currently no replacement for Enum type in SGtSNEpy, we are miss
 
 ## Examples
 
-This example demonstrates the application of function `SGtSNEpiPy` using the **[SG-t-SNE-П](https://fcdimitr.github.io/SGtSNEpi.jl/stable/)** algorithm to visualize **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. The algorithm creates a low-dimensional embedding of the nodes while preserving their structural relationships. Nodes are colored based on their club membership ('Mr. Hi' or 'Officer'). The scatter plot helps understand the social network's structure and patterns based on club affiliations.
+This example demonstrates the application of function `SGtSNEpiPy` using the **[SG-t-SNE-П](https://fcdimitr.github.io/SGtSNEpi.jl/stable/)** algorithm to visualize **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. The algorithm creates a low-dimensional embedding of the nodes while preserving their structural relationships. After the embedding, the example uses **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to visualize 2D embedding. Nodes are colored based on their club membership ('Mr. Hi' or 'Officer'). The scatter plot helps understand the social network's structure and patterns based on club affiliations.
 
 
 ```python
@@ -194,13 +194,12 @@ This example demonstrates the application of function `SGtSNEpiPy` using the **[
    import networkx as nx
    import numpy as np
    import matplotlib.pyplot as plt
+
+   # 'G' is the Zachary's Karate Club graph with 'club' attribute for each node
    
    G = nx.karate_club_graph()
    G_sparse_matrix = nx.to_scipy_sparse_matrix(G) 
    y = sgtsnepipy(G_sparse_matrix,d=2)
-   
-   
-   # 'G' is the Zachary's Karate Club graph with 'club' attribute for each node
    
    # Separate the X and Y coordinates from the embedding 'y'
    X = y[:, 0]
