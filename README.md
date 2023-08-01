@@ -265,6 +265,9 @@ ani.save('3d_karate_club_animation.gif', writer='pillow')
 ![3d_karate_club_animation](https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/998d13a8-7d2d-4fa3-b435-095783f1bdc0)
 
 
+To see the spatial embedding of larger networks/graphs, visit the website
+[`SG-t-SNE-Pi`](https://t-sne-pi.cs.duke.edu/)
+
 ## Contact
 
 Cody (Chenshuhao) Qin: chenshuhao.qin@duke.edu
