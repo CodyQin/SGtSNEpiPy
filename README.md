@@ -186,7 +186,9 @@ Because there is currently no replacement for Enum type in SGtSNEpy, we are miss
 
 ## Examples
 
-This example demonstrates the application of function `SGtSNEpiPy` using the **[SG-t-SNE-П](https://fcdimitr.github.io/SGtSNEpi.jl/stable/)** algorithm to visualize **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. The algorithm creates a low-dimensional embedding of the nodes while preserving their structural relationships. After the embedding, the example uses **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to visualize 2D embedding. Nodes are colored based on their club membership ('Mr. Hi' or 'Officer'). The scatter plot helps understand the social network's structure and patterns based on club affiliations.
+# 2D SG-t-SNE-П Embedding of **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)**
+
+This example demonstrates the application of function `SGtSNEpiPy` using the **[SG-t-SNE-П](https://fcdimitr.github.io/SGtSNEpi.jl/stable/)** algorithm to visualize **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. The algorithm creates a low-dimensional embedding of the nodes in 2D while preserving their structural relationships. After the embedding, the example uses **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to visualize 2D embedding. Nodes are colored based on their club membership ('Mr. Hi' or 'Officer'). The scatter plot helps understand the social network's structure and patterns based on club affiliations.
 
 
 ```python
@@ -222,6 +224,71 @@ This example demonstrates the application of function `SGtSNEpiPy` using the **[
 ```
 
 <img width="599" alt="2D SG-t-SNE-Π Embedding of Zachary’s Karate CLub" src="https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/7e299fc0-4162-4f0f-b39e-dfba6c6f59cc">
+
+# 3D SG-t-SNE-П Embedding of **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)**
+
+This example demonstrates the application of function `SGtSNEpiPy` using the **[SG-t-SNE-П](https://fcdimitr.github.io/SGtSNEpi.jl/stable/)** algorithm to visualize 3D embedding of **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. 
+
+The example uses **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to generate a 3D graph. To generate a gif to rotate the 3D graph, it refers to **[the website](https://sabopy.com/en/matplotlib-3d-14/)** that uses **[matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html)** and **[mpl_toolkits.mplot3d.axes3d.Axes3D](https://matplotlib.org/3.5.1/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html)**
+
+To save the animation to a gif file, you should first 
+
+
+```python
+from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
+import networkx as nx
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import animation
+from mpl_toolkits.mplot3d import axes3d
+
+G = nx.karate_club_graph()
+G_sparse_matrix = nx.to_scipy_sparse_matrix(G) 
+y = sgtsnepipy(G_sparse_matrix,d=3)
+
+# Get the color for each node based on the 'club' attribute
+node_colors = ['red' if G.nodes[node]['club'] == 'Mr. Hi' else 'blue' for node in G.nodes]
+
+# Separate the X, Y, and Z coordinates from the 3D embedding 'y'
+X = y[:, 0]
+Y = y[:, 1]
+Z = y[:, 2]
+
+# Create the 3D scatter plot to visualize the embedding
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+scatter = ax.scatter(X, Y, Z, c=node_colors, cmap='coolwarm')   # You can choose other colormaps too
+
+# Label the nodes with their numbers (node names)
+for node, (x, y, z) in zip(G.nodes, zip(X, Y, Z)):
+    ax.text(x, y, z, node)
+
+ax.set_title("3D SG-t-SNE-П Embedding of Zachary's Karate Club")
+ax.set_xlabel('X-axis')
+ax.set_ylabel('Y-axis')
+ax.set_zlabel('Z-axis')
+
+# Function to initialize the animation
+def init():
+    scatter.set_offsets(np.column_stack([X, Y, Z]))  # Update the scatter plot data
+    return scatter,
+
+# Function to update the plot for each frame of the animation
+def animate(i):
+    ax.view_init(elev=30., azim=3.6*i)
+    return scatter,
+
+# Create the animation
+ani = animation.FuncAnimation(fig, animate, init_func=init,
+                              frames=100, interval=100, blit=True)
+
+# Save the animation to a gif file
+ani.save('3d_karate_club_animation.gif', writer='pillow')
+```
+
+![3d_karate_club_animation](https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/998d13a8-7d2d-4fa3-b435-095783f1bdc0)
+
+
 
 
 ## Contact
