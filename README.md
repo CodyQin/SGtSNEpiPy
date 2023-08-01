@@ -10,7 +10,7 @@ package. This allows Python users to utilize and take full advantage
 of the 'SG-t-SNE-П' functionalities while remaining in the Python
 environment. With SGtSNEpiPy, users can swiftly and directly embed and
 visualize a sparse graph in a d-dimensional space, d=1,2,3.  The node
-adjancecy on the graph is translated to spatial near-neighbor
+adjacency on the graph is translated to spatial near-neighbor
 proximity, as illustrated in the plots above.
 
  This Python wrapper is implemented using
@@ -23,14 +23,14 @@ A in sparse formats. The graph at input can be directed or undirected,
 the edges can be weighted or unweighted. The output is the array of
 the $d$-dimensional vertex coordinates in the embedding space. The
 Python wrapper converts the data formats and translate all input and
-output arguments between Julia and Pytheon.
+output arguments between Julia and Python.
 
 
 ### Introduction
 
 SG-t-SNE extends t-SNE from point feature data to graph data,
 especially sparse graphs represented by their adjacency matrices in
-sparse formats.  Here, SNE stands for Stochastic Near-beighbor
+sparse formats.  Here, SNE stands for Stochastic Near-neighbor
 Embedding, and SG stands for sparse graph.  The SG-t-SNE algorithm was
 first introduced first described in 2019 in the
 [`paper`](https://ieeexplore.ieee.org/document/8916505)*[[1]](#1).  A
@@ -40,7 +40,7 @@ Julia was released in 2019.
 [[2]](#2).  SG-t-SNE-П makes a direct link from graph to vertex
 embedding, translating the node adjacency on the graph to spatial
 proximity in the embedding space. Other graph embedding methods first
-embed the vertices by spectral decomposition or leardning, followed by
+embed the vertices by spectral decomposition or learning, followed by
 SNE. Emperical test results show that the SG-t-SNE mapping from vertex
 adjacency to spatial proximity has higher fidelity and efficiency.
 
