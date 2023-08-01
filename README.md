@@ -2,7 +2,7 @@
 
 ## Overview
 
-`SGtSNEpiPy` is a `Python` interface, i.e., a wrapper to **['SG-t-SNE-П'](https://github.com/fcdimitr/SGtSNEpi.jl)** which is in `Julia`, implemented using the **[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)** from **[PythonCall & JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/)** package. It is used to perform swift embedding of a large, sparse graph into a d-dimensional space (d = 1,2,3) on a shared-memory computer. By taking a sprase matrix in Python, it quickly return the result array after embedding.
+`SGtSNEpiPy` is a `Python` interface that wraps **['SG-t-SNE-П'](https://github.com/fcdimitr/SGtSNEpi.jl)**, a `Julia` package. implemented using the **[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)** from **[PythonCall & JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/)** package. It is used to perform swift embedding of a large, sparse graph into a d-dimensional space (d = 1,2,3) on a shared-memory computer. By taking a sprase matrix in Python, it quickly return the result array after embedding.
 
 ### Introduction
 
