@@ -68,7 +68,7 @@ documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)**.
 
 **SGtSNEpiPy.SGtSNEpiPy.sgtsnepipy**
 
-The `sgtsnepi` method is invoked by the simple calling sequence,
+The calling sequence is simple,
 
 ```python
 Y = sgtsnepi(A, kwargs**)
@@ -89,13 +89,13 @@ where
   *Data type*: [`numpy.ndarray`](??).
 
 
-## Optional arguments 
+## Key arguments 
 
 - `d` (Integer): positive, the dimension of the embedding space. Default value: $2$ 
 
 - `λ` (Integer or Float): positive, SG-t-SNE scaling factor. Default Value: $10$
 
-### More optional SNE arguments (for experts)
+### Optional and adanced SNE arguments (for control of search area and pace) 
 
 - `max_iter` (Integer): the maximum number of iterations for the SNE optimization process.
    Default Value: 1000
@@ -113,7 +113,7 @@ where
 
 - `drop_leaf` (Boolean): if True, remove leaf nodes. Default Value: False
 
-### Advanced SG-t-SNE arguments (for performance tuning)
+### Optional and advanced SG-t-SNE arguments (for performance tuning)
 
 - `np` (Integer): number of threads (set to 0 to use all available cores).
    Default Value: threading.active_count(), which returns the number of active threads
@@ -139,13 +139,13 @@ where
 
 ## Examples
 
-### 2D Embedding of the social network [Zachary's Karate Club
-    graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)
+### 2D Embedding of the social network [`Zachary's Karate
+    Club`](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)
 
 This simple example illustrates the use of `SGtSNEpiPy` for spatial
 embedding and visualizes Zachary's Karate Club network, which can be
 found in [`NetworkX`](??).  The vertex coordinate array returned by
-`SGtSNEpiPy' is then passed to the plot function
+`SGtSNEpiPy` is then passed to the plot function
 [matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)
 for visualization. The vertices represent the club members, they are
 colored according to the club memberships, eihter 'Mr. Hi' or
@@ -188,20 +188,26 @@ network's structure and patterns.
 
 <img width="599" alt="2D SG-t-SNE-Π Embedding of Zachary’s Karate CLub" src="https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/7e299fc0-4162-4f0f-b39e-dfba6c6f59cc">
 
-### 3D SG-t-SNE-П Embedding of **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)**
+### 3D Embedding of [`Zachary's Karate Club`](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)
 
-This example demonstrates the 3D embedding of same **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. 
+For the 3D embedding, `SGtSNEpiPy` is used the same way as for the 2D embedding.
+For the 3D visualization, the graph can be viewed from various view points via rotation.
+We created an animation gif file with 
+[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html),
+[matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html),
+and
+[mpl_toolkits.mplot3d.axes3d.Axes3D](https://matplotlib.org/3.5.1/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html)
+in the [`matplotlib`](https://sabopy.com/en/matplotlib-3d-14/).
 
-After useing **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to generate a 3D graph, the example  refers to **[the website](https://sabopy.com/en/matplotlib-3d-14/)** that uses **[matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html)** and **[mpl_toolkits.mplot3d.axes3d.Axes3D](https://matplotlib.org/3.5.1/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html)** to create a gif file to rotate the 3D graph.
-
-To save the animation to a gif file, please make sure you have **[Pillow](https://pillow.readthedocs.io/en/stable/)** in your `Python`. 
-To install **[Pillow](https://pillow.readthedocs.io/en/stable/)** through Python from PyPi, issue
+To save the animation to a gif file, install 
+install [Pillow](https://pillow.readthedocs.io/en/stable/)through Python from PyPi by
+issuing the command
 
 ```
 $ pip install SGtSNEpiPy
 ```
 
-**The codes of 3D embedding**
+** The codes of 3D embedding**
 
 ```python
 from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
@@ -260,30 +266,39 @@ ani.save('3d_karate_club_animation.gif', writer='pillow')
 
 ## Contact
 
-Chenshuhao(Cody) Qin: chenshuhao.qin@duke.edu
+Cody (Chenshuhao) Qin: chenshuhao.qin@duke.edu
 
-Yihua(Aaron) Zhong: yihua.zhong@duke.edu
+Aaron (Yihua) Zhong: yihua.zhong@duke.edu
 
 
 ## Citation
 
-<a id="1">[1]</a > Nikos Pitsianis, Alexandros-Stavros Iliopoulos, Dimitris Floros, Xiaobai Sun, **[Spaceland Embedding of Sparse Stochastic Graphs](https://doi.org/10.1109/HPEC.2019.8916505)**, In IEEE High Performance Extreme Computing Conference, 2019.
+<a id="1">[1]</a > Nikos Pitsianis, Alexandros-Stavros Iliopoulos,
+Dimitris Floros, Xiaobai Sun, [Spaceland Embedding of Sparse
+Stochastic Graphs](https://doi.org/10.1109/HPEC.2019.8916505), In
+IEEE High Performance Extreme Computing Conference, 2019.
 
-<a id="2">[2]</a > Nikos Pitsianis, Dimitris Floros, Alexandros-Stavros Iliopoulos, Xiaobai Sun, **[SG-t-SNE-Π: Swift Neighbor Embedding of Sparse Stochastic Graphs](https://doi.org/10.21105/joss.01577)**, Journal of Open Source Software, 4(39), 1577, 2019.
+<a id="2">[2]</a > Nikos Pitsianis, Dimitris Floros,
+Alexandros-Stavros Iliopoulos, Xiaobai Sun, [SG-t-SNE-Π: Swift
+Neighbor Embedding of Sparse Stochastic
+Graphs](https://doi.org/10.21105/joss.01577), Journal of Open Source
+Software, 4(39), 1577, 2019.
 
-<a id="3">[3]</a > Dhapola, P., Rodhe, J., Olofzon, R. et al. **[Scarf enables a highly memory-efficient analysis of large-scale single-cell genomics data](https://doi.org/10.1038/s41467-022-32097-3)**, Nat Commun 13, 4616 (2022).
+<a id="3">[3]</a > Dhapola, P., Rodhe, J., Olofzon, R. et al. [Scarf
+enables a highly memory-efficient analysis of large-scale single-cell
+genomics data](https://doi.org/10.1038/s41467-022-32097-3), Nat Commun
+13, 4616 (2022).
 
-If you use this software, please cite the following paper.
+If you use this software, please cite the following paper:
 
-```
-@inproceedings{pitsianis2019sgtsnepi,
-   author = {Pitsianis, Nikos and Iliopoulos, Alexandros-Stavros and Floros, Dimitris and Sun, Xiaobai},
-   doi = {10.1109/HPEC.2019.8916505},
-   booktitle = {IEEE High Performance Extreme Computing Conference},
-   month = {11},
-   title = {{Spaceland Embedding of Sparse Stochastic Graphs}},
-   year = {2019}
-}
+``` @inproceedings{pitsianis2019sgtsnepi,
+author = {Pitsianis, Nikos and Iliopoulos, Alexandros-Stavros and Floros,
+          Dimitris and Sun, Xiaobai},
+	  doi = {10.1109/HPEC.2019.8916505},
+	  booktitle = {IEEE High Performance Extreme Computing Conference},
+	  month = {11},
+	  title  = {Spaceland Embedding of Sparse Stochastic Graphs}},
+	  year = {2019} }
 ```
 
 
