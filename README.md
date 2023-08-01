@@ -153,7 +153,7 @@ colored according to the membership types, eihter 'Mr. Hi' or
 'Officer'. The scatter plot is a spatial portrait of the social
 network's structure and patterns.
 
-
+** The 2D embedding code **
 
 ```python
    from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
@@ -198,17 +198,17 @@ We created an animation gif file with
 [matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html),
 and
 [mpl_toolkits.mplot3d.axes3d.Axes3D](https://matplotlib.org/3.5.1/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html)
-in the [`matplotlib`](https://sabopy.com/en/matplotlib-3d-14/).
+in [`matplotlib`](https://sabopy.com/en/matplotlib-3d-14/).
 
-To save the animation to a gif file, install 
-install [Pillow](https://pillow.readthedocs.io/en/stable/)through Python from PyPi by
+In order to save the animation to a gif file, install 
+[`Pillow`](https://pillow.readthedocs.io/en/stable/) through Python from PyPi by
 issuing the command
 
 ```
 $ pip install SGtSNEpiPy
 ```
 
-** The codes of 3D embedding**
+** The 3D embedding code **
 
 ```python
 from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
@@ -233,9 +233,9 @@ Z = y[:, 2]
 # Create the 3D scatter plot to visualize the embedding
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-scatter = ax.scatter(X, Y, Z, c=node_colors, cmap='coolwarm')   # You can choose other colormaps too
+scatter = ax.scatter(X, Y, Z, c=node_colors, cmap='coolwarm')   # One may choose other colormaps 
 
-# Label the nodes with their numbers (node names)
+# Label the nodes with their names/indices  
 for node, (x, y, z) in zip(G.nodes, zip(X, Y, Z)):
     ax.text(x, y, z, node)
 
