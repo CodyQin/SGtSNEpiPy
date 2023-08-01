@@ -139,16 +139,16 @@ where
 
 ## Examples
 
-### 2D Embedding of the social network [`Zachary's Karate
-    Club`](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)
+### 2D Embedding of the social network
+[`Zachary's Karate Club`](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)
 
 This simple example illustrates the use of `SGtSNEpiPy` for spatial
-embedding and visualizes Zachary's Karate Club network, which can be
-found in [`NetworkX`](??).  The vertex coordinate array returned by
-`SGtSNEpiPy` is then passed to the plot function
+embedding and visualization of the Zachary's Karate Club network,
+which can be found in [`NetworkX`](??).  The vertex coordinate array
+returned by `SGtSNEpiPy` is passed to the plot function
 [matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)
 for visualization. The vertices represent the club members, they are
-colored according to the club memberships, eihter 'Mr. Hi' or
+colored according to the membership types, eihter 'Mr. Hi' or
 'Officer'. The scatter plot is a spatial portrait of the social
 network's structure and patterns.
 
