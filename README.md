@@ -1,8 +1,10 @@
 # SGtSNEpiPy
 
+![3d_karate_club_animation](https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/998d13a8-7d2d-4fa3-b435-095783f1bdc0)
 ## Overview
 
-`SGtSNEpiPy` is a `Python` interface, i.e., a wrapper to [`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl) which is in `Julia`, implemented using the [`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/) from [`PythonCall` & `JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/) package.
+`SGtSNEpiPy` is a `Python` interface that wraps [`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl), a `Julia` package. This wrapper is implemented using [`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/) from the [`PythonCall` & `JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/) package, allowing Python users to access the functionality of 'SG-t-SNE-П' without needing to learn Julia. With SGtSNEpiPy, users can swiftly embed a large, sparse graph into a one, two, or three-dimensional space on a shared-memory computer. By simply inputting a sparse matrix in Python, the package will quickly return an array representing the embedded space, managing all data type conversions under the hood. This allows users to take full advantage of **['SG-t-SNE-П'](https://github.com/fcdimitr/SGtSNEpi.jl)** for graph embeddings while remaining within their familiar Python environment."
+
 
 ### Introduction
 
@@ -233,9 +235,9 @@ This example demonstrates the application of function `SGtSNEpiPy` using the **[
 
 This example demonstrates the 3D embedding of same **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. 
 
-After useing **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to generate a 3D graph, the example  refers to **[the website](https://sabopy.com/en/matplotlib-3d-14/)** that uses **[matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html)** and **[mpl_toolkits.mplot3d.axes3d.Axes3D](https://matplotlib.org/3.5.1/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html)** to generate a gif file to rotate the 3D graph.
+After useing **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to generate a 3D graph, the example  refers to **[the website](https://sabopy.com/en/matplotlib-3d-14/)** that uses **[matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html)** and **[mpl_toolkits.mplot3d.axes3d.Axes3D](https://matplotlib.org/3.5.1/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html)** to create a gif file to rotate the 3D graph.
 
-To save the animation to a gif file, you make sure you have **[Pillow](https://pillow.readthedocs.io/en/stable/)** in your python. 
+To save the animation to a gif file, please make sure you have **[Pillow](https://pillow.readthedocs.io/en/stable/)** in your `Python`. 
 To install **[Pillow](https://pillow.readthedocs.io/en/stable/)** through Python from PyPi, issue
 
 ```
@@ -297,8 +299,6 @@ ani.save('3d_karate_club_animation.gif', writer='pillow')
 ```
 
 ![3d_karate_club_animation](https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/998d13a8-7d2d-4fa3-b435-095783f1bdc0)
-
-
 
 
 ## Contact
