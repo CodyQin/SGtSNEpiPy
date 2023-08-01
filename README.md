@@ -9,13 +9,14 @@ package. This allows Python users utilize the functionality of
 'SG-t-SNE-П' without taking extra effort to convert data formats and
 programs to the Julia package.  With SGtSNEpiPy, users can swiftly and
 directly embed and visualize a large, sparse graph into a
-d-dimensional space, d=1,2,3. This is in contrast to other approaches
+d-dimensional space, d=1,2,3, as illustrated in the plots above.  This
+direct approach is different from other graph embedding approaches
 that first embed the graph nodes in a higher dimensional space and
 then make dimension reduction. The current implementation is on
 computers with share memory.  This Python wrapper is implemented using
 [`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)
-from the [`PythonCall` &
-`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/) package,
+in the package
+[`PythonCall`&`JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/).
 
  By simply inputting a sparse matrix
 in Python, the package will quickly return an array representing the
