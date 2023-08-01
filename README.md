@@ -68,7 +68,7 @@ documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)**.
 
 **SGtSNEpiPy.SGtSNEpiPy.sgtsnepipy**
 
-The `sgtsnepi` method is involved by the following calling sequence,
+The `sgtsnepi` method is invoked by the simple calling sequence,
 
 ```python
 Y = sgtsnepi(A, kwargs**)
@@ -91,48 +91,50 @@ where
 
 ## Optional arguments 
 
-- `d` (Integer): positive, the dimension of the embedding space. Default value: $d=2$ 
+- `d` (Integer): positive, the dimension of the embedding space. Default value: $2$ 
 
-- `λ` (Integer or Float): positive, SG-t-SNE scaling factor. Default Value: $\lambda=10$
+- `λ` (Integer or Float): positive, SG-t-SNE scaling factor. Default Value: $10$
 
 ### More optional SNE arguments (for experts)
 
-- `max_iter` (Integer): The maximum number of iterations for the SNE optimization process.
+- `max_iter` (Integer): the maximum number of iterations for the SNE optimization process.
    Default Value: 1000
 
-- `early_exag` (Integer): The number of early exaggeration iterations. Default Value: 250
+- `early_exag` (Integer): the number of early exaggeration iterations. Default Value: 250
 
-- `alpha` (Integer or Float): Exaggeration strength for the first early_exag iterations.
+- `alpha` (Integer or Float): exaggeration strength for the first early_exag iterations.
    Default Value: 12
 
 - `Y0`: an $n\times d$ numpy array for the initial embedding configuration in the embedding space.
    Default setting: None (the initial configuration is generated randomly). For reproducibility,
-   the user should set and save Y0.
+   the user is adviced to set and save `Y0`.
 
-- `eta` (Integer or Float): Learning parameter. Default Value: 200.0
+- `eta` (Integer or Float): the learning parameter. Default Value: 200.0
 
-- `drop_leaf` (Boolean): Remove edges connecting to leaf nodes. Default Value: False
+- `drop_leaf` (Boolean): if True, remove leaf nodes. Default Value: False
 
-### Advanced options (performance-related, introduced by SG-t-SNE)
+### Advanced SG-t-SNE arguments (for performance tuning)
 
-- `np` (Integer): Number of threads (set to 0 to use all available cores).
+- `np` (Integer): number of threads (set to 0 to use all available cores).
    Default Value: threading.active_count(), which returns the number of active threads
    in the current process.
 
-- `h` (Float): Grid side length. Default Value: 1.0
+- `h` (Float): grid step length. Default Value: 1.0
 
-- `list_grid_size` (A list of integers): The list of FFT grid sizes for data interpolation.
-   Default Value: False. This setting affects the performance. The FFT module tends to
-   be more efficient if the transform size can be factorred into small prime numbers.
+- `list_grid_size` (a list of integers): the list of FFT grid sizes
+   for data interpolation.  Default Value: False. The FFT module tends
+   to be more efficient if the transform size can be factorred into
+   small prime numbers.
 
-- `profile` (Boolean): a flag for performance profiling. If set to True, 
-   the function returns a 3-tuple: (Y, t, g), where Y is the embedding coordinate array,
+- `profile` (Boolean): if True, 
+   the function returns performance profile in a 3-tuple : (Y, t, g),
+   where Y is the embedding coordinate array,
    t is the table of the execution times of each module per iteration (size 6 x max_iter),
    and g consists of the grid size, the embedding domain size (maximum(Y) - minimum(Y)),
    and the scaling factor s_k for the band-limited version, per dimension (size 3 x max_iter).
    Default Value: False 
 
-- `fftw_single` (Boolean): If set True, use the FFTW (Fast Fourier Transform) in single precision. 
+- `fftw_single` (Boolean): if True, use the FFTW (Fast Fourier Transform) in single precision. 
     Default Value: False
 
 ## Examples
