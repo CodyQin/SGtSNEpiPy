@@ -34,7 +34,7 @@ sparse formats.  Here, SNE stands for stochastic near-neighbor
 embedding, and SG stands for sparse graph.  The SG-t-SNE algorithm was
 first introduced in 2019 in the
 [`paper`](https://ieeexplore.ieee.org/document/8916505)*[[1]](#1).  A
-software [`SG-t-SNE'](https://github.com/fcdimitr/sgtsnepi) in Julia
+software [`SG-t-SNE`](https://github.com/fcdimitr/sgtsnepi) in Julia
 was released in 2019.
 (2019))](https://joss.theoj.org/papers/10.21105/joss.01577)**
 [[2]](#2).  SG-t-SNE-П makes a direct translation of the node
