@@ -3,7 +3,25 @@
 ![3d_karate_club_animation](https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/998d13a8-7d2d-4fa3-b435-095783f1bdc0)
 ## Overview
 
-`SGtSNEpiPy` is a `Python` interface that wraps [`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl), a `Julia` package. This wrapper is implemented using [`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/) from the [`PythonCall` & `JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/) package, allowing Python users to access the functionality of 'SG-t-SNE-П' without needing to learn Julia. With SGtSNEpiPy, users can swiftly embed a large, sparse graph into a one, two, or three-dimensional space on a shared-memory computer. By simply inputting a sparse matrix in Python, the package will quickly return an array representing the embedded space, managing all data type conversions under the hood. This allows users to take full advantage of **['SG-t-SNE-П'](https://github.com/fcdimitr/SGtSNEpi.jl)** for graph embeddings while remaining within their familiar Python environment."
+`SGtSNEpiPy` is a `Python` interface to
+[`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl), a `Julia`
+package. This gves Python users to utilize the functionality of
+'SG-t-SNE-П' without taking extra effort in learning about and linking
+to the Julia package.
+
+This wrapper is implemented using
+[`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)
+from the [`PythonCall` &
+`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/) package,
+allowing Python users to access the functionality of 'SG-t-SNE-П'
+without needing to learn Julia. With SGtSNEpiPy, users can swiftly
+embed a large, sparse graph into a one, two, or three-dimensional
+space on a shared-memory computer. By simply inputting a sparse matrix
+in Python, the package will quickly return an array representing the
+embedded space, managing all data type conversions under the
+hood. This allows users to take full advantage of
+**['SG-t-SNE-П'](https://github.com/fcdimitr/SGtSNEpi.jl)** for graph
+embeddings while remaining within their familiar Python environment."
 
 
 ### Introduction
