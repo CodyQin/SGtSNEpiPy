@@ -35,13 +35,11 @@ The SG-t-SNE algorithm was first introduced in 2019 in the
 software [`SG-t-SNE-П`](https://github.com/fcdimitr/sgtsnepi) in
 `C/C++` was [released in
 (2019](https://joss.theoj.org/papers/10.21105/joss.01577) [[2]](#2)
-and then made accessible via Julia in 2021 at
-**[GitHub](https://github.com/fcdimitr/SGtSNEpi.jl)**.  This package
-`SGtSNEpiPy` make the Julia version of SG-t-SNE deployable to the
-Python ecosystem. It is implemented using the module
-**[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)**.
-This Python wrapper seamlessly converts the data formats and
-translates all input and output arguments between Julia and Python.
+and then made accessible via Julia in 2021 with [`SG-t-SNE-Pi]
+(https://github.com/fcdimitr/SGtSNEpi.jl).  This package `SGtSNEpiPy`
+makes SG-t-SNE-Pi deployable to the Python ecosystem.  This Python
+wrapper seamlessly converts the data formats and translates all input
+and output arguments between Julia and Python.
 
 ## Installation
 
@@ -58,10 +56,11 @@ and issue the command
 from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
 ```
 
-**Warning:** 
+*Warning:* 
 The current version of `SGtSNEpiPy` requires WSL2 on Windows and Rosetta 2 on Apple ARM hardware.
 
-See **[the full documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)** for more details.
+More details can be found in **[the full
+documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)**.
 
 
 
