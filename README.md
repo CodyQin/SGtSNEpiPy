@@ -15,7 +15,7 @@ The algorithm SG-t-SNE and the software t-SNE-Π were first described in Referen
 
 To install `SGtSNEpiPy` through `Python` from `PyPi`, issue
 
-```
+```shell
 $ pip install SGtSNEpiPy
 ```
 
