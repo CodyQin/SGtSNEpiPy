@@ -1,0 +1,10 @@
+README.md
+setup.cfg
+setup.py
+src/SGtSNEpiPy/SGtSNEpiPy.py
+src/SGtSNEpiPy/__init__.py
+src/SGtSNEpiPy.egg-info/PKG-INFO
+src/SGtSNEpiPy.egg-info/SOURCES.txt
+src/SGtSNEpiPy.egg-info/dependency_links.txt
+src/SGtSNEpiPy.egg-info/requires.txt
+src/SGtSNEpiPy.egg-info/top_level.txt
