@@ -5,18 +5,19 @@
 
 `SGtSNEpiPy` is a `Python` interface to
 [`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl), a `Julia`
-package. This gves Python users to utilize the functionality of
-'SG-t-SNE-П' without taking extra effort in learning about and linking
-to the Julia package.
-
-This wrapper is implemented using
+package. This allows Python users utilize the functionality of
+'SG-t-SNE-П' without taking extra effort to convert data formats and
+programs to the Julia package.  With SGtSNEpiPy, users can swiftly and
+directly embed and visualize a large, sparse graph into a
+d-dimensional space, d=1,2,3. This is in contrast to other approaches
+that first embed the graph nodes in a higher dimensional space and
+then make dimension reduction. The current implementation is on
+computers with share memory.  This Python wrapper is implemented using
 [`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)
 from the [`PythonCall` &
 `JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/) package,
-allowing Python users to access the functionality of 'SG-t-SNE-П'
-without needing to learn Julia. With SGtSNEpiPy, users can swiftly
-embed a large, sparse graph into a one, two, or three-dimensional
-space on a shared-memory computer. By simply inputting a sparse matrix
+
+ By simply inputting a sparse matrix
 in Python, the package will quickly return an array representing the
 embedded space, managing all data type conversions under the
 hood. This allows users to take full advantage of
