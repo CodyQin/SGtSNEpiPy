@@ -1,6 +1,7 @@
 # SGtSNEpiPy
 
 ![3d_karate_club_animation](https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/998d13a8-7d2d-4fa3-b435-095783f1bdc0)
+
 ## Overview
 
 `SGtSNEpiPy` is a `Python` interface to
@@ -10,28 +11,45 @@ of the 'SG-t-SNE-П' functionalities while remaining in the Python
 environment. With SGtSNEpiPy, users can swiftly and directly embed and
 visualize a large, sparse graph in a d-dimensional space, d=1,2,3,
 that translate node adjancecy into spatial near-neighbor proximity, as
-illustrated in the plots above.  This is a direct approach in
-comparison to other graph embedding approaches that embed the graph
-nodes in a higher dimensional space by spectral decomposition or
-learning, followed by stochastic near-neighbor embedding (SNE). The
-current program implementation is intended for execution on computers
-with share memory.  This Python wrapper is implemented using
+illustrated in the plots above.
+ This Python wrapper is implemented using
 [`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)
 in the package
 [`PythonCall`&`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/).
 
- By simply inputting a sparse matrix
-in Python, the package will quickly return an array representing the
-embedded space, managing all data type conversions under the
-hood. This allows users to take full advantage of
-**['SG-t-SNE-П'](https://github.com/fcdimitr/SGtSNEpi.jl)** for graph
-embeddings while remaining within their familiar Python environment."
+The input is a sparse graph G(V,E) represented by its adjacency matrix
+A in sparse formats. The graph at input can be directed or undirected,
+the edges can be weighted or unweighted. The output is the array of
+the $d$-dimensional vertex coordinates in the embedding space. The
+Python wrapper converts the data formats and translate all input and
+output arguments between Julia and Pytheon.
 
 
 ### Introduction
 
-The algorithm SG-t-SNE and the software t-SNE-Π were first described in Reference **[(Nikos Pitsianis, Alexandros-Stavros Iliopoulos, Dimitris Floros, Xiaobai Sun (2019))](https://ieeexplore.ieee.org/document/8916505)** [[1]](#1) and released on [GitHub](https://github.com/fcdimitr/sgtsnepi) in June 2019 **[(Nikos Pitsianis, Dimitris Floros, Alexandros-Stavros Iliopoulos, Xiaobai Sun (2019))](https://joss.theoj.org/papers/10.21105/joss.01577)** [[2]](#2). SG-t-SNE-П is a nonlinear method that directly embeds large, sparse, stochastic graphs into low-dimensional spaces without requiring vertex features to reside in or be transformed into a metric space. The approach is inspired by and builds upon the core principle of t-SNE for nonlinear dimensionality reduction and data visualization. Our implementation provides high-performance software for 1D, 2D, and 3D embedding of large sparse graphs on shared memory multicore computers.
+This is a direct approach in
+comparison to other graph embedding approaches that embed the graph
+nodes in a higher dimensional space by spectral decomposition or
+learning, followed by stochastic near-neighbor embedding (SNE). The
+current program implementation is intended for execution on
+shared-memory computers.
 
+SG-t-SNE extends t-SNE from point feature data to graph data,
+especially sparse graphs represented by their adjacency matrices in
+sparse formats.  Here, SNE stands for Stochastic Near-beighbor
+Embedding, and SG stands for sparse graph.  The SG-t-SNE algorithm was
+first introduced first described in 2019 in the
+[`paper`](https://ieeexplore.ieee.org/document/8916505)*[[1]](#1).  A
+company software [`SG-t-SNE'](https://github.com/fcdimitr/sgtsnepi) in
+Julia was released in 2019.
+(2019))](https://joss.theoj.org/papers/10.21105/joss.01577)**
+[[2]](#2).  SG-t-SNE-П makes a direct link from graph to vertex
+embedding, translating the node adjacency on the graph to spatial
+proximity in the embedding space. Other methods first embed the
+vertices first by spectral decomposition or leardning, followed by
+SNE. Emperical test results show that the mapping of SG-t-SNE
+from vertex adjacency to vertex proximity is more accurate and
+efficient.
 
 `SGtSNEpi`, a `Julia` interface, i.e., a wrapper to `SG-t-SNE-Π` was released on **[GitHub](https://github.com/fcdimitr/SGtSNEpi.jl)** in 2019. SGtSNEpiPy uses **[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)** module to make this Julia interface `SGtSNEpi` readily deployable to the Python ecosystem.
 
@@ -43,24 +61,21 @@ To install `SGtSNEpiPy` through `Python` from `PyPi`, issue
 $ pip install SGtSNEpiPy
 ```
 
-The installation is successful if you can import `SGtSNEpiPy` 
-and run the command line tool:
+The installation is straightford: import `SGtSNEpiPy` 
+and issue the command 
 
 ```python
 from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
 ```
 
 **Warning:** 
-`SGtSNEpiPy` is currently not working on Windows and native M1 Macs: Either use WSL2 on Windows or use the package via rosetta2 on M1 Macs.
+The current version of `SGtSNEpiPy` requires WSL2 on Windows or Apple ARM harward via rosetta2.
 
-**Note**: The rest of the content remains unchanged as it does not contain any reST-specific elements.
-
-
-See **[the full documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)** for moredetails.
+See **[the full documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)** for more details.
 
 
 
-## Parameters
+## Parameters 
 
 **SGtSNEpiPy.SGtSNEpiPy.sgtsnepipy**
 
