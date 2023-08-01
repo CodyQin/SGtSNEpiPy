@@ -18,21 +18,30 @@ is the array of the $d$-dimensional vertex coordinates in the embedding space.
 
 ### Introduction
 
-SG-t-SNE extends t-SNE from point feature data to graph data, especially sparse graphs represented
-by their adjacency matrices in sparse formats.  Here, SNE stands for stochastic near-neighbor
-embedding, and SG stands for sparse graph.  The SG-t-SNE algorithm was first introduced in 2019 in
-the [`paper`](https://ieeexplore.ieee.org/document/8916505)[[1]](#1).  A software
-[`SG-t-SNE-П`](https://github.com/fcdimitr/sgtsnepi) in `C/C++` was [released in (2019](https://joss.theoj.org/papers/10.21105/joss.01577) [[2]](#2).  `SG-t-SNE-П` makes a direct
-translation of the node adjacency on the graph to spatial proximity in the embedding space. In
-comparison, other graph embedding methods first embed the vertices by spectral decomposition or
-learning, followed by SNE. By our empirical tests and user feedback in [`SCARF`](https://scarf.readthedocs.io/en/latest/#) [[3]](#3), the SG-t-SNE
-mapping has higher fidelity and efficiency.
+SG-t-SNE extends t-SNE from point feature data to graph data,
+especially sparse graphs represented by their adjacency matrices in
+sparse formats.  Here, SNE stands for stochastic near-neighbor
+embedding, and SG stands for sparse graph.  `SG-t-SNE` makes a direct
+translation of the node adjacency on the graph to spatial proximity in
+the embedding space. In comparison, other graph embedding methods
+first embed the vertices by spectral decomposition or learning,
+followed by SNE.
+By our empirical tests, and
+by user feedback in [`SCARF`](https://scarf.readthedocs.io/en/latest/#)
+[[3]](#3), the SG-t-SNE mapping has higher fidelity and efficiency.
 
-`SGtSNEpi`, a `Julia` interface, i.e., a wrapper to `SG-t-SNE-Π` was released on
-**[GitHub](https://github.com/fcdimitr/SGtSNEpi.jl)** in 2021. `SGtSNEpiPy` is implemented using
-**[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)** module to make this Julia
-interface `SGtSNEpi` readily deployable to the Python ecosystem. The Python wrapper seamlessly
-converts the data formats and translates all input and output arguments between Julia and Python.
+The SG-t-SNE algorithm was first introduced in 2019 in the
+[`paper`](https://ieeexplore.ieee.org/document/8916505)[[1]](#1).  A
+software [`SG-t-SNE-П`](https://github.com/fcdimitr/sgtsnepi) in
+`C/C++` was [released in
+(2019](https://joss.theoj.org/papers/10.21105/joss.01577) [[2]](#2)
+and then made accessible via Julia in 2021 at
+**[GitHub](https://github.com/fcdimitr/SGtSNEpi.jl)**.  This package
+`SGtSNEpiPy` make the Julia version of SG-t-SNE deployable to the
+Python ecosystem. It is implemented using the module
+**[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)**.
+This Python wrapper seamlessly converts the data formats and
+translates all input and output arguments between Julia and Python.
 
 ## Installation
 
