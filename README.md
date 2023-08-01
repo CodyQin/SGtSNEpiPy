@@ -8,7 +8,7 @@
 package. This allows Python users to utilize and take full advantage
 of the 'SG-t-SNE-П' functionalities while remaining in the Python
 environment. With SGtSNEpiPy, users can swiftly and directly embed and
-visualize a large, sparse graph into a d-dimensional space, d=1,2,3,
+visualize a large, sparse graph in a d-dimensional space, d=1,2,3,
 that translate node adjancecy into spatial near-neighbor proximity, as
 illustrated in the plots above.  This is a direct approach in
 comparison to other graph embedding approaches that embed the graph
@@ -18,7 +18,7 @@ current program implementation is intended for execution on computers
 with share memory.  This Python wrapper is implemented using
 [`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)
 in the package
-[`PythonCall`&`JuliaCall'](https://cjdoris.github.io/PythonCall.jl/stable/).
+[`PythonCall`&`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/).
 
  By simply inputting a sparse matrix
 in Python, the package will quickly return an array representing the
