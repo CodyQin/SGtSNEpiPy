@@ -5,18 +5,20 @@
 
 `SGtSNEpiPy` is a `Python` interface to
 [`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl), a `Julia`
-package. This allows Python users utilize the functionality of
-'SG-t-SNE-П' without taking extra effort to convert data formats and
-programs to the Julia package.  With SGtSNEpiPy, users can swiftly and
-directly embed and visualize a large, sparse graph into a
-d-dimensional space, d=1,2,3, as illustrated in the plots above.  This
-direct approach is different from other graph embedding approaches
-that first embed the graph nodes in a higher dimensional space and
-then make dimension reduction. The current implementation is on
-computers with share memory.  This Python wrapper is implemented using
+package. This allows Python users to utilize and take full advantage
+of the 'SG-t-SNE-П' functionalities while remaining in the Python
+environment. With SGtSNEpiPy, users can swiftly and directly embed and
+visualize a large, sparse graph into a d-dimensional space, d=1,2,3,
+that translate node adjancecy into spatial near-neighbor proximity, as
+illustrated in the plots above.  This is a direct approach in
+comparison to other graph embedding approaches that embed the graph
+nodes in a higher dimensional space by spectral decomposition or
+learning, followed by stochastic near-neighbor embedding (SNE). The
+current program implementation is intended for execution on computers
+with share memory.  This Python wrapper is implemented using
 [`JuliaCall`](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)
 in the package
-[`PythonCall`&`JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/).
+[`PythonCall`&`JuliaCall'](https://cjdoris.github.io/PythonCall.jl/stable/).
 
  By simply inputting a sparse matrix
 in Python, the package will quickly return an array representing the
