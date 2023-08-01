@@ -39,11 +39,10 @@ Julia was released in 2019.
 (2019))](https://joss.theoj.org/papers/10.21105/joss.01577)**
 [[2]](#2).  SG-t-SNE-П makes a direct link from graph to vertex
 embedding, translating the node adjacency on the graph to spatial
-proximity in the embedding space. Other methods first embed the
-vertices first by spectral decomposition or leardning, followed by
-SNE. Emperical test results show that the mapping of SG-t-SNE
-from vertex adjacency to vertex proximity is more accurate and
-efficient.
+proximity in the embedding space. Other graph embedding methods first
+embed the vertices by spectral decomposition or leardning, followed by
+SNE. Emperical test results show that the SG-t-SNE mapping from vertex
+adjacency to spatial proximity has higher fidelity and efficiency.
 
 `SGtSNEpi`, a `Julia` interface, i.e., a wrapper to `SG-t-SNE-Π` was released on **[GitHub](https://github.com/fcdimitr/SGtSNEpi.jl)** in 2019. SGtSNEpiPy uses **[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)** module to make this Julia interface `SGtSNEpi` readily deployable to the Python ecosystem.
 
