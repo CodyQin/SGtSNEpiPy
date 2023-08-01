@@ -22,8 +22,8 @@ $ pip install SGtSNEpiPy
 The installation is successful if you can import `SGtSNEpiPy` 
 and run the command line tool:
 
-```
-$ python -c 'from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy'
+```python
+from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
 ```
 
 **Warning:** 
@@ -231,10 +231,11 @@ This example demonstrates the 3D embedding of same **[Zachary's Karate Club grap
 
 After useing **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to generate a 3D graph, the example  refers to **[the website](https://sabopy.com/en/matplotlib-3d-14/)** that uses **[matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html)** and **[mpl_toolkits.mplot3d.axes3d.Axes3D](https://matplotlib.org/3.5.1/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html)** to generate a gif file to rotate the 3D graph.
 
-To save the animation to a gif file, you make sure you have **[Pillow](https://pillow.readthedocs.io/en/stable/)** in your python or install it. Run the command line tool:
+To save the animation to a gif file, you make sure you have **[Pillow](https://pillow.readthedocs.io/en/stable/)** in your python. 
+To install **[Pillow](https://pillow.readthedocs.io/en/stable/)** through Python from PyPi, issue
 
 ```
-$ python -c 'from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy'
+$ pip install SGtSNEpiPy
 ```
 
 **The codes of 3D embedding**
