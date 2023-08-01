@@ -84,7 +84,7 @@ We describe the optional keyword arguments.
 
 - `λ` (Integer or Float): SG-t-SNE scaling factor. (Default Value: 10)
 
-## More options (for experts)
+### More options (for experts)
 
 - `max_iter` (Integer): The maximum number of iterations for the optimization process. (Default Value: 1000)
 
@@ -98,7 +98,7 @@ We describe the optional keyword arguments.
 
 - `drop_leaf` (Boolean): Remove edges connecting to leaf nodes. (Default Value: False)
 
-## Advanced options (performance-related)
+### Advanced options (performance-related)
 
 - `np` (Integer): Number of threads (set to 0 to use all available cores). (Default Value: threading.active_count(), which returns the number of active threads in the current process.)
 
