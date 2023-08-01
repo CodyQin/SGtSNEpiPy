@@ -7,7 +7,7 @@ with open("readme.md", "r", encoding="utf-8") as f:
 
 setup(
     name='SGtSNEpiPy',
-    version='1.1.4',
+    version='1.1.5',
     description='SGtSNEpiPy is a Python interface to SG-t-SNE-П, a powerful tool for visualizing large, sparse, stochastic graphs.',
     long_description=long_description,
     long_description_content_type="text/markdown",
