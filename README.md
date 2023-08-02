@@ -4,16 +4,21 @@
 
 ## Overview
 
-`SGtSNEpiPy` is a `Python` interface to [`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl), a
-`Julia` package. This allows Python users to utilize and take full advantage of the `SG-t-SNE-П`
-functionalities within the Python ecosystem. With SGtSNEpiPy, users can swiftly and directly embed
-and visualize a sparse graph in a $d$-dimensional space, $d=1,2,3$.  The node adjacency on the graph
-is translated to spatial near-neighbor proximity, as illustrated in the plots above.
+`SGtSNEpiPy` is a `Python` interface to
+[`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl), a `Julia`
+package. It enables the Python users to utilize and take full
+advantage of the `SG-t-SNE-П` functionalities within the Python
+ecosystem. With SGtSNEpiPy, users can swiftly and directly embed and
+visualize a sparse graph in a $d$-dimensional space, $d=1,2,3$.  The
+node adjacency on the graph is translated to spatial near-neighbor
+proximity, as illustrated in the plots above.
 
  
-The input is a sparse graph $G(V,E)$ represented by its adjacency matrix A in sparse formats. The
-graph at input can be directed or undirected and the edges can be weighted or unweighted. The output
-is the array of the $d$-dimensional vertex coordinates in the embedding space. 
+The input is a sparse graph $G(V,E)$ represented by its adjacency
+matrix A in sparse formats. The graph at input is either directed or
+undirected, with the edges weighted or unweighted. The output is the
+array of the $d$-dimensional vertex coordinates in the embedding
+space.
 
 
 ### Introduction
