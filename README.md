@@ -30,14 +30,13 @@ translation of the node adjacency on the graph to spatial proximity in
 the embedding space. In comparison, other graph embedding methods
 first embed the vertices by spectral decomposition or learning,
 followed by SNE.
-By our empirical tests, and
-by user feedback in [`SCARF`](https://scarf.readthedocs.io/en/latest/#)
+By our empirical tests, and by user feedback in 
+[`SCARF`](https://scarf.readthedocs.io/en/latest/#)
 [[3]](#3), the SG-t-SNE mapping has higher fidelity and efficiency.
 
 The SG-t-SNE algorithm was first introduced in 2019 in the
 [`paper`](https://ieeexplore.ieee.org/document/8916505)[[1]](#1).  A
-software [`SG-t-SNE-П`](https://github.com/fcdimitr/sgtsnepi) in C/C++ was
-released in 2019 
+software [`SG-t-SNE-П`](https://github.com/fcdimitr/sgtsnepi) in C/C++ was released in 2019 
 [`in`](https://joss.theoj.org/papers/10.21105/joss.01577) [[2]](#2)
 and then made accessible via Julia in 2021 
 [`at the github`](https://github.com/fcdimitr/SGtSNEpi.jl).
@@ -70,7 +69,7 @@ documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)**.
 
 ## Usage
 
-**SGtSNEpiPy.SGtSNEpiPy.sgtsnepipy**
+**SGtSNEpiPy.sgtsnepipy**
 
 The calling sequence is simple,
 
@@ -79,67 +78,66 @@ Y = sgtsnepi(A, kwargs**)
 ```
 
 where 
-- `A`: the adjacency matrix of a graph G(V, E), in the compressive sparse row (CSR) format.
- Matrix A has $n=|V|$ rows, $n$ columns and $m$ nonzero elements represent the edges in E. 
+- `A`: the adjacency matrix of a graph $G(V, E)$, in the compressive sparse row (CSR) format.
+ Matrix `A` has $n=|V|$ rows, $n$ columns and $m$ nonzero elements represent the edges in $E$. 
  The graph is directed or undirected, with weighted or unweighted edges. The graph may
  represent a real-world network or the graph is synthetically generated.
- In the former case, the vertices may represent data feature vecors/points, and the edges represent
- the pariwise similarities of the feature vectors.
+ In the former case, the vertices may represent data feature vectors/points, and the edges represent
+ the pairwise similarities of the feature vectors.
 
-  *Data type*: [`scipy.sparse.csr.csr_matrix`](??) 
+  *Data type*: [`scipy.sparse.csr.csr_matrix`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html) 
 
-- `Y`: the $n\times d$ array of vertex coordinates in the $d$-dimensional embedding space.
+- `Y`: the `n x d` array of vertex coordinates in the $d$-dimensional embedding space.
   
-  *Data type*: [`numpy.ndarray`](??).
+  *Data type*: [`numpy.ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html).
 
 
 ## Key arguments 
 
-- `d` (Integer): positive, the dimension of the embedding space. Default value: $2$ 
+- `d` (Integer): positive, the dimension of the embedding space. Default value: `2` 
 
-- `λ` (Integer or Float): positive, SG-t-SNE scaling factor. Default Value: $10$
+- `λ` (Integer or Float): positive, SG-t-SNE scaling factor. Default Value: `10`
 
 ### Optional and advanced SNE arguments (for control of search area and pace) 
 
 - `max_iter` (Integer): the maximum number of iterations for the SNE optimization process.
    Default Value: 1000
 
-- `early_exag` (Integer): the number of early exaggeration iterations. Default Value: 250
+- `early_exag` (Integer): the number of early exaggeration iterations. Default Value: `250`
 
 - `alpha` (Integer or Float): exaggeration strength for the first early_exag iterations.
-   Default Value: 12
+   Default Value: `12`
 
-- `Y0`: an $n\times d$ numpy array for the initial embedding configuration in the embedding space.
-   Default setting: None (the initial configuration is generated randomly). For reproducibility,
+- `Y0`: an `n x d` `numpy` array for the initial embedding configuration in the embedding space.
+   Default setting: `None` (the initial configuration is generated randomly). For reproducibility,
    the user is adviced to set and save `Y0`.
 
-- `eta` (Integer or Float): the learning parameter. Default Value: 200.0
+- `eta` (Integer or Float): the learning parameter. Default Value: `200.0`
 
-- `drop_leaf` (Boolean): if True, remove leaf nodes. Default Value: False
+- `drop_leaf` (Boolean): if `True`, remove leaf nodes. Default Value: `False`
 
 ### Optional and advanced SG-t-SNE arguments (for performance tuning)
 
 - `np` (Integer): number of threads (set to 0 to use all available cores).
-   Default Value: threading.active_count(), which returns the number of active threads
-   in the current process.
+   Default Value: `threading.active_count()`, which returns the number of active threads in the current process.
 
 - `h` (Float): grid step length. Default Value: 1.0
 
 - `list_grid_size` (a list of integers): the list of FFT grid sizes
-   for data interpolation.  Default Value: False. The FFT module tends
-   to be more efficient if the transform size can be factorred into
+   for data interpolation.  Default Value: `False`. The FFT module tends
+   to be more efficient if the transform size can be factored into
    small prime numbers.
 
-- `profile` (Boolean): if True, 
-   the function returns performance profile in a 3-tuple : (Y, t, g),
-   where Y is the embedding coordinate array,
-   t is the table of the execution times of each module per iteration (size 6 x max_iter),
-   and g consists of the grid size, the embedding domain size (maximum(Y) - minimum(Y)),
-   and the scaling factor s_k for the band-limited version, per dimension (size 3 x max_iter).
-   Default Value: False 
+- `profile` (Boolean): if `True`, 
+   the function returns performance profile in a 3-tuple : `(Y, t, g)`,
+   where `Y` is the embedding coordinate array,
+   `t` is the table of the execution times of each module per iteration (size `6 x max_iter`),
+   and `g` consists of the grid size, the embedding domain size (`maximum(Y) - minimum(Y)`),
+   and the scaling factor `s_k` for the band-limited version, per dimension (size `3 x max_iter`).
+   Default Value: `False` 
 
-- `fftw_single` (Boolean): if True, use the FFTW (Fast Fourier Transform) in single precision. 
-    Default Value: False
+- `fftw_single` (Boolean): if `True`, use the FFTW (Fast Fourier Transform) in single precision. 
+    Default Value: `False`
 
 ## Examples
 
