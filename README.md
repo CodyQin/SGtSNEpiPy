@@ -154,7 +154,7 @@ colored according to the membership types, either 'Mr. Hi' or
 'Officer'. The scatter plot is a spatial portrait of the social
 network's structure and patterns.
 
-** The 2D embedding code **
+**The 2D embedding code**
 
 ```python
    from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
@@ -209,7 +209,7 @@ issuing the command
 $ pip install pillow
 ```
 
-** The 3D embedding code **
+**The 3D embedding code**
 
 ```python
 from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
@@ -298,8 +298,7 @@ enables a highly memory-efficient analysis of large-scale single-cell
 genomics data](https://doi.org/10.1038/s41467-022-32097-3), Nat Commun
 13, 4616 (2022).
 
-<a id="4">[4]</a > G. Hinton, S. Roweis, [Stochastic Neighbor Embedding]
-(https://dl.acm.org/doi/10.5555/2968618.2968725), NIPS, 857–864, (2002).
+<a id="4">[4]</a > G. Hinton, S. Roweis, [Stochastic Neighbor Embedding](https://dl.acm.org/doi/10.5555/2968618.2968725), NIPS, 857–864, (2002).
 
 <a id="5">[5]</a > L. van der Maaten, G. Hinton, [Visualizing data using 
 t-SNE](https://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf), 
