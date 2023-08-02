@@ -1,196 +1,160 @@
 # SGtSNEpiPy
 
+![3d_karate_club_animation](https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/998d13a8-7d2d-4fa3-b435-095783f1bdc0)
+
 ## Overview
 
-`SGtSNEpiPy` is a `Python` interface that wraps **['SG-t-SNE-П'](https://github.com/fcdimitr/SGtSNEpi.jl)**, a `Julia` package. This wrapper is implemented using the **[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)** from **[PythonCall & JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/)** package, allowing Python users to access the functionality of 'SG-t-SNE-П' without needing to learn Julia. With SGtSNEpiPy, users can swiftly embed a large, sparse graph into a one, two, or three-dimensional space on a shared-memory computer. By simply inputting a sparse matrix in Python, the package will quickly return an array representing the embedded space, managing all data type conversions under the hood. This allows users to take full advantage of **['SG-t-SNE-П'](https://github.com/fcdimitr/SGtSNEpi.jl)** for graph embeddings while remaining within their familiar Python environment."
+`SGtSNEpiPy` is a `Python` interface to
+[`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl), a `Julia`
+package. It enables Python users to utilize and take full
+advantage of the `SG-t-SNE-П` functionalities within the Python
+ecosystem. With SGtSNEpiPy, users can swiftly and directly embed and
+visualize a sparse graph in a $d$-dimensional space, $d=1,2,3$.  The
+node adjacency on the graph is translated to spatial near-neighbor
+proximity, as illustrated in the plots above.
+
+The input is a sparse graph $G(V,E)$ represented by its adjacency
+matrix A in sparse formats. The graph at input is either directed or
+undirected, with the edges weighted or unweighted. The output is the
+array of the $d$-dimensional vertex coordinates in the embedding
+space.
 
 
 ### Introduction
 
-The algorithm SG-t-SNE and the software t-SNE-Π were first described in Reference **[(Nikos Pitsianis, Alexandros-Stavros Iliopoulos, Dimitris Floros, Xiaobai Sun (2019))](https://ieeexplore.ieee.org/document/8916505)** [[1]](#1) and released on **[GitHub](https://github.com/fcdimitr/sgtsnepi)** in June 2019 **[(Nikos Pitsianis, Dimitris Floros, Alexandros-Stavros Iliopoulos, Xiaobai Sun (2019))](https://joss.theoj.org/papers/10.21105/joss.01577)** [[2]](#2). SG-t-SNE-П is a nonlinear method that directly embeds large, sparse, stochastic graphs into low-dimensional spaces without requiring vertex features to reside in or be transformed into a metric space. The approach is inspired by and builds upon the core principle of t-SNE for nonlinear dimensionality reduction and data visualization. Our implementation provides high-performance software for 1D, 2D, and 3D embedding of large sparse graphs on shared memory multicore computers.
+SG-t-SNE extends [`t-SNE`](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) [4](#4),[5](#5),[6](#6),[7](#7) from point feature data to graph data,
+especially sparse graphs represented by their adjacency matrices in
+sparse formats.  Here, SNE stands for stochastic near-neighbor
+embedding, and SG stands for sparse graph.  `SG-t-SNE` makes a direct
+translation of the node adjacency on the graph to spatial proximity in
+the embedding space. In comparison, other graph embedding methods
+first embed the vertices by spectral decomposition or learning,
+followed by SNE.
+By our empirical tests and by user feedback in 
+[`SCARF`](https://scarf.readthedocs.io/en/latest/#)
+[[3]](#3), the SG-t-SNE mapping has higher fidelity and efficiency.
 
-
-`SGtSNEpi`, a `Julia` interface, i.e., a wrapper to `SG-t-SNE-Π` was released on **[GitHub](https://github.com/fcdimitr/SGtSNEpi.jl)** in 2019. SGtSNEpiPy uses **[JuliaCall](https://cjdoris.github.io/PythonCall.jl/stable/juliacall/)** module to make this Julia interface `SGtSNEpi` readily deployable to the Python ecosystem.
+The SG-t-SNE algorithm was first introduced in 2019 in the
+[`paper`](https://ieeexplore.ieee.org/document/8916505)[[1]](#1).  A
+software [`SG-t-SNE-П`](https://github.com/fcdimitr/sgtsnepi) in C/C++ was released in 2019 
+[`in`](https://joss.theoj.org/papers/10.21105/joss.01577) [[2]](#2)
+and then made accessible via Julia in 2021 
+[`on GitHub`](https://github.com/fcdimitr/SGtSNEpi.jl).
+This package `SGtSNEpiPy` makes SG-t-SNE-Pi deployable to the Python ecosystem.
+This Python wrapper seamlessly converts the data formats and
+translates all input and output arguments between Julia and Python.
 
 ## Installation
 
 To install `SGtSNEpiPy` through `Python` from `PyPi`, issue
 
-```
+```shell
 $ pip install SGtSNEpiPy
 ```
 
-The installation is successful if you can import `SGtSNEpiPy` 
-and run the command line tool:
+The installation is straightforward: import `SGtSNEpiPy` 
+and issue the command 
 
 ```python
 from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
 ```
 
-**Warning:** 
-`SGtSNEpiPy` is currently not working on Windows and native M1 Macs: Either use WSL2 on Windows or use the package via rosetta2 on M1 Macs.
+*Warning:* 
+The current version of `SGtSNEpiPy` requires WSL2 on Windows and Rosetta 2 on Apple ARM hardware.
 
-**Note**: The rest of the content remains unchanged as it does not contain any reST-specific elements.
-
-
-See **[the full documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)** for moredetails.
+More details can be found in **[the full
+documentation](https://fcdimitr.github.io/SGtSNEpi.jl/stable)**.
 
 
 
-## Parameters
+## Usage
 
-**SGtSNEpiPy.SGtSNEpiPy.sgtsnepipy**
+**SGtSNEpiPy.sgtsnepipy**
 
-This package only has one method currently.
+The calling sequence is simple,
 
 ```python
-   Y = sgtsnepi(A)
+Y = sgtsnepi(A, kwargs**)
 ```
 
+where 
+- `A`: the adjacency matrix of a graph $G(V, E)$, in the compressive sparse row (CSR) format.
+ Matrix `A` has $n=|V|$ rows, $n$ columns and the $m$ nonzero elements represent the edges in $E$. 
+ The graph is directed or undirected, with weighted or unweighted edges. The graph may
+ represent a real-world network or the graph is synthetically generated.
+ In the former case, the vertices may represent data feature vectors/points, and the edges represent
+ the pairwise similarities of the feature vectors.
 
-### A: the input CSR sparse matrix representing the data points' pairwise similarities. (Mandatory)
+  *Data type*: [`scipy.sparse.csr.csr_matrix`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html) 
 
-- Data Type: `scipy.sparse.csr.csr_matrix` (The matrix includes row, value, value, whose type are all `numpy.ndarray` with three arrays of `numpy.int32`, `numpy.int32`, `numpy.int64`), that is a CSR sparse matrix generated by package `scipy`.
-
-### Returns Y: array with the coordinates of the embedding of the graph nodes
-
-- Data Type: `numpy.ndarray`, a 2-dimensional array of `numpy.float64`.
-   - Number of rows: the number of rows or columns in the CSR matrix (the input).
-   - Number of columns: the number of dimensions of the embedding space.
+- `Y`: the `n x d` array of vertex coordinates in the $d$-dimensional embedding space.
+  
+  *Data type*: [`numpy.ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html).
 
 
-## Optional input parameters
+## Key arguments 
 
-### d: the number of dimensions of the embedding space. (Optional)
+- `d` (Integer): positive, the dimension of the embedding space. Default value: `2` 
 
-<ul>
-<li>Data Type: Integer</li>
-<li>Default Value: 2</li>
-</ul>
+- `λ` (Integer or Float): positive, SG-t-SNE scaling factor. Default Value: `10`
 
-### λ: SG-t-SNE scaling factor. (Optional)
+### Optional and advanced SNE arguments (for control of search area and pace) 
 
-<ul>
-<li>Data Type: Integer or Float</li>
-<li>Default Value: 10</li>
-</ul>
+- `max_iter` (Integer): the maximum number of iterations for the SNE optimization process.
+   Default Value: 1000
 
-### max_iter: the maximum number of iterations for the optimization process. (Optional)
+- `early_exag` (Integer): the number of early exaggeration iterations. Default Value: `250`
 
-<ul>
-<li>Data Type: Integer</li>
-<li>Default Value: 1000</li>
-</ul>
+- `alpha` (Integer or Float): exaggeration strength for the first early_exag iterations.
+   Default Value: `12`
 
-### early_exag: the number of early exageration iterations. (Optional)
+- `Y0`: an `n x d` `numpy` array for the initial embedding configuration in the embedding space.
+   Default setting: `None` (the initial configuration is generated randomly). For reproducibility,
+   the user is advised to set and save `Y0`.
 
-<ul>
-<li>Data Type: Integer</li>
-<li>Default Value: 250</li>
-</ul>
+- `eta` (Integer or Float): the learning parameter. Default Value: `200.0`
 
-### Y0: initial distribution in embedding space (randomly generated if nothing).(Optional)
+- `drop_leaf` (Boolean): if `True`, remove leaf nodes. Default Value: `False`
 
-<ul>
-<li>Data Type: A numpy array of shape (number of data points, d).</li>
-<li>Default Value: None</li>
-<li>You should set this parameter to generate reproducible results.</li>
-</ul>
+### Optional and advanced SG-t-SNE arguments (for performance tuning)
 
-### profile: whether to enable profiling for the algorithm. (Optional)
+- `np` (Integer): number of threads (set to 0 to use all available cores).
+   Default Value: `threading.active_count()`, which returns the number of active threads in the current process.
 
-<ul>
-<li>Data Type: Boolean</li>
-<li>Default Value: False</li>
-<li>Meaning: disable/enable profiling. If enabled the function return a 3-tuple: (Y, t, g), where Y is the embedding coordinates, t are the execution times of each module per iteration (size 6 x max_iter) and g contains the grid size, the embedding domain size (maximum(Y) - minimum(Y)), and the scaling factor s_k for the band-limited version, per dimension (size 3 x max_iter).</li>
-</ul>
+- `h` (Float): grid step length. Default Value: 1.0
 
-### np: number of threads (set to 0 to use all available cores) (Optional)
+- `list_grid_size` (a list of integers): the list of FFT grid sizes
+   for data interpolation.  Default Value: `False`. The FFT module tends
+   to be more efficient if the transform size can be factored into
+   small prime numbers.
 
-<ul>
-<li>Data Type: Integer</li>
-<li>Default Value: threading.active_count(), which returns the number of active threads in the current process.</li>
-</ul>
+- `profile` (Boolean): if `True`, 
+   the function returns performance profile in a 3-tuple : `(Y, t, g)`,
+   where `Y` is the embedding coordinate array,
+   `t` is the table of the execution times of each module per iteration (size `6 x max_iter`),
+   and `g` consists of the grid size, the embedding domain size (`maximum(Y) - minimum(Y)`),
+   and the scaling factor `s_k` for the band-limited version, per dimension (size `3 x max_iter`).
+   Default Value: `False` 
 
-### h: grid side length (Optional)
-
-<ul>
-<li>Data Type: Float</li>
-<li>Default Value: 1.0</li>
-</ul>
-
-### u: either perplexity or value of λ (Optional)
-
-<ul>
-<li>Data Type: Integer</li>
-<li>Default Value: 10</li>
-</ul>
-
-### k: number of nearest neighbors (for kNN formation) (Optional)
-
-<ul>
-<li>Data Type: Integer</li>
-<li>Default Value: 30</li>
-</ul>
-
-### eta: learning parameter (Optional)
-
-<ul>
-<li>Data Type: Integer or Float</li>
-<li>Default Value: 200.0</li>
-</ul>
-
-### alpha: exaggeration strength (applicable for first early_exag iterations). (Optional)
-
-<ul>
-<li>Data Type: Integer or Float</li>
-<li>Default Value: 12</li>
-</ul>
-
-### fftw_single: Whether to use single-precision FFTW (Fast Fourier Transform) library. (Optional)
-
-<ul>
-<li>Data Type: Boolean</li>
-<li>Default Value: False</li>
-</ul>
-
-### drop_leaf: remove edges connecting to leaf nodes. (Optional)
-
-<ul>
-<li>Data Type: Boolean</li>
-<li>Default Value: False</li>
-</ul>
-
-### list_grid_size: the list of allowed grid size along each dimension. (Optional)
-
-<ul>
-<li>Data Type: A list of integers</li>
-<li>Default Value: False.</li>
-<li>Affects FFT performance; most efficient if the size is a product of small primes. </li>
-</ul>
-
-**Warning:** 
-
-Because there is currently no replacement for Enum type in SGtSNEpy, we are missing the reduction of parameter you can change in Julia: **version**. Thus, the value will be its default value in Python.
-
-### version: the version of the algorithm for computing repulsive terms. (Optional)
-
-<ul>
-<li>Data Type: Enum (Julia)</li>
-<li>Default Value: NUCONV_BL</li>
-<li>Options are:
-</ul>
-<li>SGtSNEpi.NUCONV_BL (default): band-limited, approximated via non-uniform convolution</li>
-<li>SGtSNEpi.NUCONV: approximated via non-uniform convolution (higher resolution than SGtSNEpi.NUCONV_BL, slower execution time)</li>
-<li>SGtSNEpi.EXACT: no approximation; quadratic complexity, use only with small datasets</li>
-</ul>
+- `fftw_single` (Boolean): if `True`, use the FFTW (Fast Fourier Transform) in single precision. 
+    Default Value: `False`
 
 ## Examples
 
-### 2D SG-t-SNE-П Embedding of **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)**
+### 2D Embedding of the social network
+[`Zachary's Karate Club`](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)
 
-This example demonstrates the application of function `SGtSNEpiPy` using the **[SG-t-SNE-П](https://fcdimitr.github.io/SGtSNEpi.jl/stable/)** algorithm to visualize **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. The algorithm creates a low-dimensional embedding of the nodes in 2D while preserving their structural relationships. After the embedding, the example uses **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to visualize 2D embedding. Nodes are colored based on their club membership ('Mr. Hi' or 'Officer'). The scatter plot helps understand the social network's structure and patterns based on club affiliations.
+This simple example illustrates the use of `SGtSNEpiPy` for spatial
+embedding and visualization of Zachary's Karate Club network,
+which is readily available in [`NetworkX`](https://networkx.org).  The vertex coordinate array
+returned by `SGtSNEpiPy` is passed to the plot function
+[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)
+for visualization. The vertices represent the club members, they are
+colored according to the membership types, either 'Mr. Hi' or
+'Officer'. The scatter plot is a spatial portrait of the social
+network's structure and patterns.
 
+** The 2D embedding code **
 
 ```python
    from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
@@ -226,20 +190,26 @@ This example demonstrates the application of function `SGtSNEpiPy` using the **[
 
 <img width="599" alt="2D SG-t-SNE-Π Embedding of Zachary’s Karate CLub" src="https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/7e299fc0-4162-4f0f-b39e-dfba6c6f59cc">
 
-### 3D SG-t-SNE-П Embedding of **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)**
+### 3D Embedding of [`Zachary's Karate Club`](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)
 
-This example demonstrates the 3D embedding of same **[Zachary's Karate Club graph](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)** in `NetworkX`. 
+For the 3D embedding, `SGtSNEpiPy` is used the same way as for the 2D embedding.
+For the 3D visualization, the graph can be viewed from various viewpoints via rotation.
+We created an animated `gif` file with 
+[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html),
+[matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html),
+and
+[mpl_toolkits.mplot3d.axes3d.Axes3D](https://matplotlib.org/3.5.1/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html)
+in [`matplotlib`](https://sabopy.com/en/matplotlib-3d-14/).
 
-After useing **[matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)** to generate a 3D graph, the example  refers to **[the website](https://sabopy.com/en/matplotlib-3d-14/)** that uses **[matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html)** and **[mpl_toolkits.mplot3d.axes3d.Axes3D](https://matplotlib.org/3.5.1/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html)** to create a gif file to rotate the 3D graph.
-
-To save the animation to a gif file, please make sure you have **[Pillow](https://pillow.readthedocs.io/en/stable/)** in your `Python`. 
-To install **[Pillow](https://pillow.readthedocs.io/en/stable/)** through Python from PyPi, issue
+In order to save the animation to a gif file, install 
+[`Pillow`](https://pillow.readthedocs.io/en/stable/) through Python from PyPi by
+issuing the command
 
 ```
-$ pip install SGtSNEpiPy
+$ pip install pillow
 ```
 
-**The codes of 3D embedding**
+** The 3D embedding code **
 
 ```python
 from SGtSNEpiPy.SGtSNEpiPy import sgtsnepipy
@@ -264,9 +234,9 @@ Z = y[:, 2]
 # Create the 3D scatter plot to visualize the embedding
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-scatter = ax.scatter(X, Y, Z, c=node_colors, cmap='coolwarm')   # You can choose other colormaps too
+scatter = ax.scatter(X, Y, Z, c=node_colors, cmap='coolwarm')   # One may choose other colormaps 
 
-# Label the nodes with their numbers (node names)
+# Label the nodes with their names/indices  
 for node, (x, y, z) in zip(G.nodes, zip(X, Y, Z)):
     ax.text(x, y, z, node)
 
@@ -296,32 +266,63 @@ ani.save('3d_karate_club_animation.gif', writer='pillow')
 ![3d_karate_club_animation](https://github.com/CodyQin/SGtSNEpiPy/assets/125537769/998d13a8-7d2d-4fa3-b435-095783f1bdc0)
 
 
-
+To see the spatial embedding of larger networks/graphs, visit the website
+[`SG-t-SNE-Pi`](https://t-sne-pi.cs.duke.edu/)
 
 ## Contact
 
-Chenshuhao(Cody) Qin: chenshuhao.qin@duke.edu
+Cody (Chenshuhao) Qin: chenshuhao.qin@duke.edu
 
-Yihua(Aaron) Zhong: yihua.zhong@duke.edu
+Aaron (Yihua) Zhong: yihua.zhong@duke.edu
 
+## Acknowledgment
+
+Dr. N. Pitsianis, Dr. D. Floros, and Dr. X. Sun have offered 
+valuable introductions to SG-t-SNE, sparse data formats,
+and Foreign Language Interfaces. 
 
 ## Citation
 
-<a id="1">[1]</a > Nikos Pitsianis, Alexandros-Stavros Iliopoulos, Dimitris Floros, Xiaobai Sun, **[Spaceland Embedding of Sparse Stochastic Graphs](https://doi.org/10.1109/HPEC.2019.8916505)**, In IEEE High Performance Extreme Computing Conference, 2019.
+<a id="1">[1]</a > Nikos Pitsianis, Alexandros-Stavros Iliopoulos,
+Dimitris Floros, Xiaobai Sun, [Spaceland Embedding of Sparse
+Stochastic Graphs](https://doi.org/10.1109/HPEC.2019.8916505), In
+IEEE HPEC Conference, (2019).
 
-<a id="2">[2]</a > Nikos Pitsianis, Dimitris Floros, Alexandros-Stavros Iliopoulos, Xiaobai Sun, **[SG-t-SNE-Π: Swift Neighbor Embedding of Sparse Stochastic Graphs](https://doi.org/10.21105/joss.01577)**, Journal of Open Source Software, 4(39), 1577, 2019.
+<a id="2">[2]</a > Nikos Pitsianis, Dimitris Floros,
+Alexandros-Stavros Iliopoulos, Xiaobai Sun, [SG-t-SNE-Π: Swift
+Neighbor Embedding of Sparse Stochastic
+Graphs](https://doi.org/10.21105/joss.01577), JOSS, 4(39), 1577, 2019.
 
-If you use this software, please cite the following paper.
+<a id="3">[3]</a > Dhapola, P., Rodhe, J., Olofzon, R. et al. [Scarf
+enables a highly memory-efficient analysis of large-scale single-cell
+genomics data](https://doi.org/10.1038/s41467-022-32097-3), Nat Commun
+13, 4616 (2022).
 
-```
-@inproceedings{pitsianis2019sgtsnepi,
-   author = {Pitsianis, Nikos and Iliopoulos, Alexandros-Stavros and Floros, Dimitris and Sun, Xiaobai},
-   doi = {10.1109/HPEC.2019.8916505},
-   booktitle = {IEEE High Performance Extreme Computing Conference},
-   month = {11},
-   title = {{Spaceland Embedding of Sparse Stochastic Graphs}},
-   year = {2019}
-}
+<a id="4">[4]</a > G. Hinton, S. Roweis, [Stochastic Neighbor Embedding]
+(https://dl.acm.org/doi/10.5555/2968618.2968725), NIPS, 857–864, (2002).
+
+<a id="5">[5]</a > L. van der Maaten, G. Hinton, [Visualizing data using 
+t-SNE](https://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf), 
+JMLR, 9(11) 2579−2605, (2008).
+
+<a id="6">[6]</a > L. van der Maaten, [Accelerating t-SNE using tree-based 
+algorithms](https://jmlr.org/papers/volume15/vandermaaten14a/vandermaaten14a.pdf), 
+JMLR, 15(1) 3221-3245, (2014).
+
+<a id="7">[7]</a > Linderman, G.C., Rachh, M., Hoskins, J.G. et al. [Fast interpolation-based t-SNE for 
+improved visualization of single-cell RNA-seq data](https://doi.org/10.1038/s41592-018-0308-4), 
+Nat Methods 16, 243–245 (2019)..
+
+If you use this software, please cite the following paper:
+
+``` @inproceedings{pitsianis2019sgtsnepi,
+author = {Pitsianis, Nikos and Iliopoulos, Alexandros-Stavros and Floros,
+          Dimitris and Sun, Xiaobai},
+	  doi = {10.1109/HPEC.2019.8916505},
+	  booktitle = {IEEE High Performance Extreme Computing Conference},
+	  month = {11},
+	  title  = {Spaceland Embedding of Sparse Stochastic Graphs}},
+	  year = {2019} }
 ```
 
 
