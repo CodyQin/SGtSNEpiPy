@@ -23,7 +23,7 @@ space.
 
 ### Introduction
 
-SG-t-SNE extends t-SNE from point feature data to graph data,
+SG-t-SNE extends [`t-SNE`](https???)[[?]](#??) from point feature data to graph data,
 especially sparse graphs represented by their adjacency matrices in
 sparse formats.  Here, SNE stands for stochastic near-neighbor
 embedding, and SG stands for sparse graph.  `SG-t-SNE` makes a direct
