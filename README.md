@@ -13,7 +13,6 @@ visualize a sparse graph in a $d$-dimensional space, $d=1,2,3$.  The
 node adjacency on the graph is translated to spatial near-neighbor
 proximity, as illustrated in the plots above.
 
- 
 The input is a sparse graph $G(V,E)$ represented by its adjacency
 matrix A in sparse formats. The graph at input is either directed or
 undirected, with the edges weighted or unweighted. The output is the
@@ -23,7 +22,7 @@ space.
 
 ### Introduction
 
-SG-t-SNE extends [`t-SNE`](https???)[[?]](#??) from point feature data to graph data,
+SG-t-SNE extends [`t-SNE`](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding)[[4](#4),[5](#5)] from point feature data to graph data,
 especially sparse graphs represented by their adjacency matrices in
 sparse formats.  Here, SNE stands for stochastic near-neighbor
 embedding, and SG stands for sparse graph.  `SG-t-SNE` makes a direct
@@ -100,7 +99,7 @@ where
 
 - `λ` (Integer or Float): positive, SG-t-SNE scaling factor. Default Value: $10$
 
-### Optional and adanced SNE arguments (for control of search area and pace) 
+### Optional and advanced SNE arguments (for control of search area and pace) 
 
 - `max_iter` (Integer): the maximum number of iterations for the SNE optimization process.
    Default Value: 1000
@@ -291,18 +290,24 @@ and Foreign Language Interface.
 <a id="1">[1]</a > Nikos Pitsianis, Alexandros-Stavros Iliopoulos,
 Dimitris Floros, Xiaobai Sun, [Spaceland Embedding of Sparse
 Stochastic Graphs](https://doi.org/10.1109/HPEC.2019.8916505), In
-IEEE High Performance Extreme Computing Conference, 2019.
+IEEE HPEC Conference, 2019.
 
 <a id="2">[2]</a > Nikos Pitsianis, Dimitris Floros,
 Alexandros-Stavros Iliopoulos, Xiaobai Sun, [SG-t-SNE-Π: Swift
 Neighbor Embedding of Sparse Stochastic
-Graphs](https://doi.org/10.21105/joss.01577), Journal of Open Source
-Software, 4(39), 1577, 2019.
+Graphs](https://doi.org/10.21105/joss.01577), JOSS, 4(39), 1577, 2019.
 
 <a id="3">[3]</a > Dhapola, P., Rodhe, J., Olofzon, R. et al. [Scarf
 enables a highly memory-efficient analysis of large-scale single-cell
-genomics data](https://doi.org/10.1038/s41467-022-32097-3), Nat Commun
+genomics data](https://doi.org/10.1038/s41467-022-32097-3), Nat. Commun.
 13, 4616 (2022).
+
+<a id="4">[4]</a > L. van der Maaten, G. Hinton, [Visualizing data using 
+t-SNE](https://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf), 
+JMLR, 9(11) 2579−2605, 2008.
+
+<a id="5">[5]</a > L. van der Maaten, [Accelerating t-SNE using tree-based algorithms](https://jmlr.org/papers/volume15/vandermaaten14a/vandermaaten14a.pdf), 
+JMLR, 15(1) 3221-3245, 2014.
 
 If you use this software, please cite the following paper:
 
