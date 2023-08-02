@@ -278,6 +278,13 @@ Cody (Chenshuhao) Qin: chenshuhao.qin@duke.edu
 
 Aaron (Yihua) Zhong: yihua.zhong@duke.edu
 
+## Acknowledgement
+
+Dr. N. Pitsianis, Dr. D. Floros and Dr. X. Sun have offered 
+valuable introduction to SG-t-SNE, sparse data formats,
+and Foreign Language Interface. 
+
+
 
 ## Citation
 
