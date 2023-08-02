@@ -37,11 +37,11 @@ by user feedback in [`SCARF`](https://scarf.readthedocs.io/en/latest/#)
 
 The SG-t-SNE algorithm was first introduced in 2019 in the
 [`paper`](https://ieeexplore.ieee.org/document/8916505)[[1]](#1).  A
-software [`SG-t-SNE-П`](https://github.com/fcdimitr/sgtsnepi) in was
-released in 2019 in C/C++
+software [`SG-t-SNE-П`](https://github.com/fcdimitr/sgtsnepi) in C/C++ was
+released in 2019 
 [`in`](https://joss.theoj.org/papers/10.21105/joss.01577) [[2]](#2)
-and then made accessible via Julia in 2021 with 
-[`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl).  This package
+and then made accessible via Julia in 2021 
+[`at`](https://github.com/fcdimitr/SGtSNEpi.jl).  This package
 `SGtSNEpiPy` makes SG-t-SNE-Pi deployable to the Python ecosystem.
 This Python wrapper seamlessly converts the data formats and
 translates all input and output arguments between Julia and Python.
