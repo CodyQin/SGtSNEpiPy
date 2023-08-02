@@ -6,7 +6,7 @@
 
 `SGtSNEpiPy` is a `Python` interface to
 [`SG-t-SNE-П`](https://github.com/fcdimitr/SGtSNEpi.jl), a `Julia`
-package. It enables the Python users to utilize and take full
+package. It enables Python users to utilize and take full
 advantage of the `SG-t-SNE-П` functionalities within the Python
 ecosystem. With SGtSNEpiPy, users can swiftly and directly embed and
 visualize a sparse graph in a $d$-dimensional space, $d=1,2,3$.  The
@@ -22,7 +22,7 @@ space.
 
 ### Introduction
 
-SG-t-SNE extends [`t-SNE`](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding)[[4](#4),[5](#5),[6](#6),[7](#7)] from point feature data to graph data,
+SG-t-SNE extends [`t-SNE`](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) [4](#4),[5](#5),[6](#6),[7](#7) from point feature data to graph data,
 especially sparse graphs represented by their adjacency matrices in
 sparse formats.  Here, SNE stands for stochastic near-neighbor
 embedding, and SG stands for sparse graph.  `SG-t-SNE` makes a direct
@@ -30,7 +30,7 @@ translation of the node adjacency on the graph to spatial proximity in
 the embedding space. In comparison, other graph embedding methods
 first embed the vertices by spectral decomposition or learning,
 followed by SNE.
-By our empirical tests, and by user feedback in 
+By our empirical tests and by user feedback in 
 [`SCARF`](https://scarf.readthedocs.io/en/latest/#)
 [[3]](#3), the SG-t-SNE mapping has higher fidelity and efficiency.
 
@@ -39,7 +39,7 @@ The SG-t-SNE algorithm was first introduced in 2019 in the
 software [`SG-t-SNE-П`](https://github.com/fcdimitr/sgtsnepi) in C/C++ was released in 2019 
 [`in`](https://joss.theoj.org/papers/10.21105/joss.01577) [[2]](#2)
 and then made accessible via Julia in 2021 
-[`at the github`](https://github.com/fcdimitr/SGtSNEpi.jl).
+[`on GitHub`](https://github.com/fcdimitr/SGtSNEpi.jl).
 This package `SGtSNEpiPy` makes SG-t-SNE-Pi deployable to the Python ecosystem.
 This Python wrapper seamlessly converts the data formats and
 translates all input and output arguments between Julia and Python.
@@ -79,7 +79,7 @@ Y = sgtsnepi(A, kwargs**)
 
 where 
 - `A`: the adjacency matrix of a graph $G(V, E)$, in the compressive sparse row (CSR) format.
- Matrix `A` has $n=|V|$ rows, $n$ columns and $m$ nonzero elements represent the edges in $E$. 
+ Matrix `A` has $n=|V|$ rows, $n$ columns and the $m$ nonzero elements represent the edges in $E$. 
  The graph is directed or undirected, with weighted or unweighted edges. The graph may
  represent a real-world network or the graph is synthetically generated.
  In the former case, the vertices may represent data feature vectors/points, and the edges represent
@@ -110,7 +110,7 @@ where
 
 - `Y0`: an `n x d` `numpy` array for the initial embedding configuration in the embedding space.
    Default setting: `None` (the initial configuration is generated randomly). For reproducibility,
-   the user is adviced to set and save `Y0`.
+   the user is advised to set and save `Y0`.
 
 - `eta` (Integer or Float): the learning parameter. Default Value: `200.0`
 
@@ -145,12 +145,12 @@ where
 [`Zachary's Karate Club`](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)
 
 This simple example illustrates the use of `SGtSNEpiPy` for spatial
-embedding and visualization of the Zachary's Karate Club network,
-which can be found in [`NetworkX`](??).  The vertex coordinate array
+embedding and visualization of Zachary's Karate Club network,
+which is readily available in [`NetworkX`](https://networkx.org).  The vertex coordinate array
 returned by `SGtSNEpiPy` is passed to the plot function
 [matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html)
 for visualization. The vertices represent the club members, they are
-colored according to the membership types, eihter 'Mr. Hi' or
+colored according to the membership types, either 'Mr. Hi' or
 'Officer'. The scatter plot is a spatial portrait of the social
 network's structure and patterns.
 
@@ -193,8 +193,8 @@ network's structure and patterns.
 ### 3D Embedding of [`Zachary's Karate Club`](https://networkx.org/documentation/stable/_modules/networkx/generators/social.html#karate_club_graph)
 
 For the 3D embedding, `SGtSNEpiPy` is used the same way as for the 2D embedding.
-For the 3D visualization, the graph can be viewed from various view points via rotation.
-We created an animation gif file with 
+For the 3D visualization, the graph can be viewed from various viewpoints via rotation.
+We created an animated `gif` file with 
 [matplotlib.pyplot](https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html),
 [matplotlib.animation](https://matplotlib.org/stable/api/animation_api.html),
 and
@@ -206,7 +206,7 @@ In order to save the animation to a gif file, install
 issuing the command
 
 ```
-$ pip install SGtSNEpiPy
+$ pip install pillow
 ```
 
 ** The 3D embedding code **
@@ -275,13 +275,11 @@ Cody (Chenshuhao) Qin: chenshuhao.qin@duke.edu
 
 Aaron (Yihua) Zhong: yihua.zhong@duke.edu
 
-## Acknowledgement
+## Acknowledgment
 
-Dr. N. Pitsianis, Dr. D. Floros and Dr. X. Sun have offered 
-valuable introduction to SG-t-SNE, sparse data formats,
-and Foreign Language Interface. 
-
-
+Dr. N. Pitsianis, Dr. D. Floros, and Dr. X. Sun have offered 
+valuable introductions to SG-t-SNE, sparse data formats,
+and Foreign Language Interfaces. 
 
 ## Citation
 
