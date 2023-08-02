@@ -22,7 +22,7 @@ space.
 
 ### Introduction
 
-SG-t-SNE extends [`t-SNE`](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding)[[4](#4),[5](#5)] from point feature data to graph data,
+SG-t-SNE extends [`t-SNE`](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding)[[4](#4),[5](#5),[6](#6),[7](#7)] from point feature data to graph data,
 especially sparse graphs represented by their adjacency matrices in
 sparse formats.  Here, SNE stands for stochastic near-neighbor
 embedding, and SG stands for sparse graph.  `SG-t-SNE` makes a direct
@@ -290,7 +290,7 @@ and Foreign Language Interface.
 <a id="1">[1]</a > Nikos Pitsianis, Alexandros-Stavros Iliopoulos,
 Dimitris Floros, Xiaobai Sun, [Spaceland Embedding of Sparse
 Stochastic Graphs](https://doi.org/10.1109/HPEC.2019.8916505), In
-IEEE HPEC Conference, 2019.
+IEEE HPEC Conference, (2019).
 
 <a id="2">[2]</a > Nikos Pitsianis, Dimitris Floros,
 Alexandros-Stavros Iliopoulos, Xiaobai Sun, [SG-t-SNE-Π: Swift
@@ -299,15 +299,23 @@ Graphs](https://doi.org/10.21105/joss.01577), JOSS, 4(39), 1577, 2019.
 
 <a id="3">[3]</a > Dhapola, P., Rodhe, J., Olofzon, R. et al. [Scarf
 enables a highly memory-efficient analysis of large-scale single-cell
-genomics data](https://doi.org/10.1038/s41467-022-32097-3), Nat. Commun.
+genomics data](https://doi.org/10.1038/s41467-022-32097-3), Nat Commun
 13, 4616 (2022).
 
-<a id="4">[4]</a > L. van der Maaten, G. Hinton, [Visualizing data using 
-t-SNE](https://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf), 
-JMLR, 9(11) 2579−2605, 2008.
+<a id="4">[4]</a > G. Hinton, S. Roweis, [Stochastic Neighbor Embedding]
+(https://dl.acm.org/doi/10.5555/2968618.2968725), NIPS, 857–864, (2002).
 
-<a id="5">[5]</a > L. van der Maaten, [Accelerating t-SNE using tree-based algorithms](https://jmlr.org/papers/volume15/vandermaaten14a/vandermaaten14a.pdf), 
-JMLR, 15(1) 3221-3245, 2014.
+<a id="5">[5]</a > L. van der Maaten, G. Hinton, [Visualizing data using 
+t-SNE](https://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf), 
+JMLR, 9(11) 2579−2605, (2008).
+
+<a id="6">[6]</a > L. van der Maaten, [Accelerating t-SNE using tree-based 
+algorithms](https://jmlr.org/papers/volume15/vandermaaten14a/vandermaaten14a.pdf), 
+JMLR, 15(1) 3221-3245, (2014).
+
+<a id="7">[7]</a > Linderman, G.C., Rachh, M., Hoskins, J.G. et al. [Fast interpolation-based t-SNE for 
+improved visualization of single-cell RNA-seq data](https://doi.org/10.1038/s41592-018-0308-4), 
+Nat Methods 16, 243–245 (2019)..
 
 If you use this software, please cite the following paper:
 
